@@ -3,6 +3,7 @@ package com.example.Av1.service;
 import com.example.Av1.model.NewsEntity;
 import com.example.Av1.model.ReleasesEntity;
 import com.example.Av1.repository.NewsRepository;
+import com.example.Av1.repository.ReleasesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,9 @@ public class NewsService {
 
     @Autowired
     private NewsRepository newsRepository;
+
+    @Autowired
+    private ReleasesRepository releasesRepository;
 
     public String obterTodos() {
         String dadosNoticiasReleases = "";
@@ -68,7 +72,7 @@ public class NewsService {
 
     public void inserirDadosReleases(String dadosReleases) {
         ReleasesEntity releasesEntity = new ReleasesEntity(dadosReleases);
-        newsRepository.save(releasesEntity);
+        releasesRepository.save(releasesEntity);
     }
 
 }
